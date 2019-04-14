@@ -20,7 +20,6 @@ public class Server {
             BufferedReader buffer = new BufferedReader(new InputStreamReader(in));
 
             String path = buffer.readLine();
-            System.out.println(path);
             String[] part = path.split("&");
             String comando = part[0];
             String dir = part[1];
