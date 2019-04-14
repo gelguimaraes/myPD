@@ -2,7 +2,7 @@ package br.edu.ifpb.gugawag.so.sockets;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Client {
@@ -14,18 +14,15 @@ public class Client {
     public static PrintWriter pout;
 
     public static void main(String[] args)  {
-
+        System.out.println("Cliente NFS iniciado");
         Boolean running = true;
-        String outStr;
-        while(running) {
-            try {
+        try {
+            Client.start();
+            while( (running = Client.readCommand() ) );
                 Client.start();
-                running = Client.readCommand();
-                while( (outStr = bin.readLine() ) != null )
-                    System.out.println(outStr);
-                } catch (Exception ioe) {
-                System.err.println(ioe);
-            }
+
+        } catch (Exception ioe) {
+            System.err.println(ioe);
         }
     }
 
@@ -34,7 +31,6 @@ public class Client {
         inputStream = Client.socket.getInputStream();
         bin = new BufferedReader(new InputStreamReader(Client.inputStream));
         pout = new PrintWriter(socket.getOutputStream(), true);
-
     }
 
     public static boolean readCommand() throws Exception {
@@ -50,26 +46,41 @@ public class Client {
                 return true;
             }
         }else if(inputArgs[0].equals("rename")) {
+
             if(inputArgs.length > 4) {
                 System.out.println("Muitos argumentos para comando rename");
                 return true;
             }
         } else if(inputArgs[0].equals("createdir")) {
+
             if(inputArgs.length > 3) {
                 System.out.println("Muitos argumentos para comando create");
                 return true;
                 }
             } else if (inputArgs[0].equals("createfile")) {
+
                 if(inputArgs.length > 3) {
                     System.out.println("Muitos argumentos para comando create");
                     return true;
-                    }
-                } else if(inputArgs[0].equals("remove")) {
+                }
+            } else if(inputArgs[0].equals("remove")) {
+
             System.out.println("Comando remover");
             if(inputArgs.length > 3) {
                 System.out.println("Muitos argumentos para comando remove");
                 return true;
             }
+        } else if(inputArgs[0].equals("help")){
+
+           System.out.println(" Cliente NFS:\n  readdir - Lista arquivos em um diretório\n" +
+                   " rename - Renomeia arquivo ou diretório \n" +
+                   " createdir - Cria diretório\n" +
+                   " cretefile - Cria arquivo\n" +
+                   " remove - Apaga arquivo ou diretório\n" +
+                   " exit - Encerra esta conexão\n" +
+                   " help - Exibe este manual\n");
+           Client.end();
+           return true;
         } else if(inputArgs[0].equals("exit")) {
             Client.end();
             return false;
@@ -77,6 +88,7 @@ public class Client {
             System.out.println("Comando não encontrado");
             return true;
         }
+
         serverInput = input.replaceAll(" ", "&");
 
         if(inputArgs.length < 4){
@@ -85,6 +97,8 @@ public class Client {
             }
         }
         pout.println(serverInput);
+        Client.printOutput();
+        Client.end();
         return true;
     }
 
@@ -92,4 +106,12 @@ public class Client {
         Client.socket.close();
 
     }
+
+    public static void printOutput() throws  Exception{
+
+        String outStr;
+        while( (outStr = bin.readLine() ) != null )
+            System.out.println(outStr);
+    }
+
 }
