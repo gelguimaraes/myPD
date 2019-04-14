@@ -54,12 +54,17 @@ public class Client {
                 System.out.println("Muitos argumentos para comando rename");
                 return true;
             }
-        } else if(inputArgs[0].equals("create")) {
+        } else if(inputArgs[0].equals("createdir")) {
             if(inputArgs.length > 3) {
                 System.out.println("Muitos argumentos para comando create");
                 return true;
-            }
-        } else if(inputArgs[0].equals("remove")) {
+                }
+            } else if (inputArgs[0].equals("createfile")) {
+                if(inputArgs.length > 3) {
+                    System.out.println("Muitos argumentos para comando create");
+                    return true;
+                    }
+                } else if(inputArgs[0].equals("remove")) {
             System.out.println("Comando remover");
             if(inputArgs.length > 3) {
                 System.out.println("Muitos argumentos para comando remove");
