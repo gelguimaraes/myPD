@@ -3,6 +3,8 @@ package br.edu.ifpb.gugawag.so.sockets;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Server {
@@ -19,7 +21,8 @@ public class Server {
                 System.out.println("I/O error: " + e);
             }
             // new thread for a client
-            new ServerThread(clientSocket).start();
+            ServerThread st = new ServerThread(clientSocket);
+            st.start();
         }
     }
 }

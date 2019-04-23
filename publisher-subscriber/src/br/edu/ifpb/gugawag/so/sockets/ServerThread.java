@@ -8,44 +8,44 @@ import java.util.Map;
 
 public class ServerThread extends Thread {
 
-        private Socket clientSocket;
-        private Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>() ;
+    private Socket clientSocket;
+    private Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();
 
-        public ServerThread(Socket clientSocket) {
-            this.clientSocket = clientSocket;
+    public ServerThread(Socket clientSocket) {
+        this.clientSocket = clientSocket;
+    }
+
+    public void run() {
+        DataOutputStream dos = null;
+        DataInputStream dis = null;
+        String topico = "";
+        String ip = "";
+        String porta = "";
+        Subscritor subscritor;
+        ArrayList<Subscritor> subscritors;
+        ArrayList<Subscritor> allsubscritors;
+
+        try {
+            dos = new DataOutputStream(clientSocket.getOutputStream());
+            dis = new DataInputStream(clientSocket.getInputStream());
+            ip = clientSocket.getInetAddress().toString();
+            porta = Integer.toString(clientSocket.getPort());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        // System.out.println(topico);
 
-        public void run() {
-            DataOutputStream dos = null;
-            DataInputStream dis;
-            String topico = "";
-            String ip = "";
-            String porta = "";
-            Subscritor subscritor;
-            ArrayList<Subscritor> subscritors;
-
+        while (true) {
             try {
-                dos = new DataOutputStream(clientSocket.getOutputStream());
-                dis = new DataInputStream(clientSocket.getInputStream());
-                ip = clientSocket.getInetAddress().toString();
-                porta = Integer.toString(clientSocket.getPort());
-
-                topico =  dis.readUTF();
+                topico = dis.readUTF();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-           // System.out.println(topico);
-
-            if(topicos.get(topico) == null){
+            if (topicos.get(topico) == null) {
                 topicos.put(topico, new ArrayList<Subscritor>());
-                try {
-                    dos.writeUTF("Novo tópico : " + topico);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
             subscritors = topicos.get(topico);
-            if(subscritors.size() == 0){
+            if (subscritors.size() == 0) {
                 subscritor = new Subscritor(ip, porta);
                 subscritors.add(subscritor);
                 try {
@@ -53,27 +53,32 @@ public class ServerThread extends Thread {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else{
-                for (Subscritor s: subscritors) {
-                    if(s.getSubscritor(ip, porta) != null){
-                        try {
-                            dos.writeUTF("já adicionado: " + topico);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+            } else {
+                for (Map.Entry<String, ArrayList<Subscritor>> entry : topicos.entrySet()) {
+                    allsubscritors = entry.getValue();
+                    for (Subscritor s : allsubscritors) {
+                        if (s.getSubscritor(ip, porta) != null) {
+                            subscritors.add(s);
+                            try {
+                                dos.writeUTF("Adicionado: " + topico);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
             }
 
-            for(Map.Entry<String, ArrayList<Subscritor>> entry : topicos.entrySet()) {
+            for (Map.Entry<String, ArrayList<Subscritor>> entry : topicos.entrySet()) {
                 String t = entry.getKey();
                 System.out.println("Tópico: " + t);
                 System.out.println("Subscriptors:");
-                subscritors =  entry.getValue();
-                for (Subscritor s: subscritors){
-                    System.out.println("IP " +s.getIp() + " Porta " +s.porta);
+                subscritors = entry.getValue();
+                for (Subscritor s : subscritors) {
+                    System.out.println("IP " + s.getIp() + " Porta " + s.porta);
                 }
             }
         }
+    }
 }
