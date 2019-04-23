@@ -1,51 +1,33 @@
 package br.edu.ifpb.gugawag.so.sockets;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
 
-    public static Socket socket;
-    public static InputStream inputStream;
-    public static BufferedReader bin;
-    public static Scanner userIn = new Scanner(System.in);
-    public static PrintWriter pout;
+    public static void main(String[] args) throws IOException {
+        System.out.println("Cliente Iniciado!");
 
-    public static void main(String[] args)  {
+        Socket socket = new Socket("127.0.0.1", 7000);
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+        DataInputStream dis = new DataInputStream(socket.getInputStream());
 
-        Boolean running = true;
-        String outStr;
-        while(running) {
-            try {
-                Client.start();
-                running = Client.readCommand();
-                while( (outStr = bin.readLine() ) != null )
-                    System.out.println(outStr);
-                } catch (Exception ioe) {
-                System.err.println(ioe);
-            }
+        while (true) {
+            Scanner teclado = new Scanner(System.in);
+            // escrevendo para o servidor
+            dos.writeUTF(teclado.nextLine());
+
+            // lendo o que o servidor enviou
+            String mensagem = dis.readUTF();
+            System.out.println(mensagem);
         }
-    }
-
-    public static void start() throws Exception {
-        socket = new Socket("localhost",7000);
-        inputStream = Client.socket.getInputStream();
-        bin = new BufferedReader(new InputStreamReader(Client.inputStream));
-        pout = new PrintWriter(socket.getOutputStream(), true);
-
-    }
-
-    public static boolean readCommand() throws Exception {
-
-        String input = userIn.nextLine();
-        pout.println(input);
-        return true;
-    }
-
-    public static void end() throws Exception {
-        Client.socket.close();
-
+        /*
+         * Observe o while acima. Perceba que primeiro se escreve para o servidor (linha 27), depois se lê do canal de
+         * entrada (linha 30), vindo do servidor. Agora observe o código while do Servidor2. Lá, primeiro se lê,
+         * depois se escreve. De outra forma, haveria um deadlock.
+         */
     }
 }
