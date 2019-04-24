@@ -9,10 +9,11 @@ import java.util.Map;
 public class ServerThread extends Thread {
 
     private Socket clientSocket;
-    private Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();
+    private Map<String, ArrayList<Subscritor>> topicos;
 
-    public ServerThread(Socket clientSocket) {
+    public ServerThread(Socket clientSocket, Map<String, ArrayList<Subscritor>> topicos) {
         this.clientSocket = clientSocket;
+        this.topicos = topicos;
     }
 
     public void run() {
@@ -41,20 +42,20 @@ public class ServerThread extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (topicos.get(topico) == null) {
-                topicos.put(topico, new ArrayList<Subscritor>());
+            if (this.topicos.get(topico) == null) {
+                this.topicos.put(topico, new ArrayList<Subscritor>());
             }
-            subscritors = topicos.get(topico);
+            subscritors = this.topicos.get(topico);
             if (subscritors.size() == 0) {
                 subscritor = new Subscritor(ip, porta);
                 subscritors.add(subscritor);
                 try {
-                    dos.writeUTF("Adicionado ao tópico: " + topico);
+                    dos.writeUTF("Novo inscrito e adicionado ao tópico: " + topico);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
-                for (Map.Entry<String, ArrayList<Subscritor>> entry : topicos.entrySet()) {
+                for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
                     allsubscritors = entry.getValue();
                     for (Subscritor s : allsubscritors) {
                         if (s.getSubscritor(ip, porta) != null) {
@@ -70,7 +71,7 @@ public class ServerThread extends Thread {
                 }
             }
 
-            for (Map.Entry<String, ArrayList<Subscritor>> entry : topicos.entrySet()) {
+            for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
                 String t = entry.getKey();
                 System.out.println("Tópico: " + t);
                 System.out.println("Subscriptors:");

@@ -4,14 +4,18 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 
 public class Server {
 
+
+
     public static void main(String[] args) throws IOException {
         System.out.println("Servidor Iniciado !");
         ServerSocket serverSocket = new ServerSocket(7000);
+        Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();
 
         while (true) {
             Socket clientSocket = null;
@@ -21,7 +25,7 @@ public class Server {
                 System.out.println("I/O error: " + e);
             }
             // new thread for a client
-            ServerThread st = new ServerThread(clientSocket);
+            ServerThread st = new ServerThread(clientSocket, topicos);
             st.start();
         }
     }
