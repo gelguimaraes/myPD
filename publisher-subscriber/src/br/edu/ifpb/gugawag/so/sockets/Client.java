@@ -17,7 +17,7 @@ public class Client {
 
         while (true) {
             Scanner teclado = new Scanner(System.in);
-            // escrevendo para o servidor
+            System.out.print("Digite um tópico: ");
             dos.writeUTF(teclado.nextLine());
 
             // lendo o que o servidor enviou

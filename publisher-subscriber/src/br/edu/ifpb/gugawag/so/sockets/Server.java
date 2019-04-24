@@ -10,11 +10,11 @@ import java.util.Map;
 
 public class Server {
 
-
-
     public static void main(String[] args) throws IOException {
         System.out.println("Servidor Iniciado !");
+
         ServerSocket serverSocket = new ServerSocket(7000);
+
         Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();
 
         while (true) {

@@ -1,10 +1,11 @@
 package br.edu.ifpb.gugawag.so.sockets;
 
+import java.util.ArrayList;
+
 public class Subscritor {
 
-    public String ip;
-    public String porta;
-
+    private String ip;
+    private String porta;
 
     public Subscritor(String ip, String porta) {
         this.ip = ip;
@@ -28,10 +29,11 @@ public class Subscritor {
         this.porta = porta;
     }
 
-    public Subscritor getSubscritor (String ip, String porta){
-        if((this.ip.equals(ip)) && (this.porta.equals(porta))){
-            return this;
+    public Boolean isSubscritor(String ip, String porta) {
+        if ((this.ip.equals(ip)) && (this.porta.equals(porta))) {
+            return true;
         }
-        return null;
+        return false;
     }
+
 }

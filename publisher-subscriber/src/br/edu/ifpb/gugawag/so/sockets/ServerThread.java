@@ -42,43 +42,51 @@ public class ServerThread extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (this.topicos.get(topico) == null) {
-                this.topicos.put(topico, new ArrayList<Subscritor>());
-            }
-            subscritors = this.topicos.get(topico);
-            if (subscritors.size() == 0) {
+
+            if(this.topicos.get(topico) == null){
+                subscritors = new ArrayList<>();
                 subscritor = new Subscritor(ip, porta);
                 subscritors.add(subscritor);
+                this.topicos.put(topico, subscritors);
                 try {
-                    dos.writeUTF("Novo inscrito e adicionado ao tópico: " + topico);
+                    dos.writeUTF("Novo inscrito e novo tópico adicionado: " + topico);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else {
-                for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
-                    allsubscritors = entry.getValue();
-                    for (Subscritor s : allsubscritors) {
-                        if (s.getSubscritor(ip, porta) != null) {
-                            subscritors.add(s);
+            }else{
+                boolean isSbuscritor = false;
+                subscritors = this.topicos.get(topico);
+                    for (Subscritor s : subscritors) {
+                        if (s.isSubscritor(ip, porta)) {
                             try {
-                                dos.writeUTF("Adicionado: " + topico);
+                                dos.writeUTF("Já inscrito no tópico: " + topico);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            isSbuscritor = true;
                             break;
                         }
                     }
-                }
+                    if (!isSbuscritor){
+                        subscritors.add(new Subscritor(ip, porta));
+                        try {
+                            dos.writeUTF("Adicionado ao topico: " + topico);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
             }
 
             for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
+                String texto = "";
                 String t = entry.getKey();
-                System.out.println("Tópico: " + t);
-                System.out.println("Subscriptors:");
+                texto += "Tópico: " + t +"\nSubscriptors:\n";
                 subscritors = entry.getValue();
                 for (Subscritor s : subscritors) {
-                    System.out.println("IP " + s.getIp() + " Porta " + s.porta);
+                    texto += "Ip " + s.getIp() + " Porta " + s.getPorta() + "\n";
                 }
+                System.out.println(texto);
             }
         }
     }
