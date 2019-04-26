@@ -3,6 +3,7 @@ package br.edu.ifpb.gugawag.so.sockets;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class Client {
 
             // lendo o que o servidor enviou
             String mensagem = dis.readUTF();
+
             System.out.println(mensagem);
         }
         /*

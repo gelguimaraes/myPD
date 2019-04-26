@@ -2,7 +2,12 @@ package br.edu.ifpb.gugawag.so.sockets;
 
 import java.io.*;
 import java.net.Socket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,12 +29,11 @@ public class ServerThread extends Thread {
         String porta = "";
         Subscritor subscritor;
         ArrayList<Subscritor> subscritors;
-        ArrayList<Subscritor> allsubscritors;
 
         try {
             dos = new DataOutputStream(clientSocket.getOutputStream());
             dis = new DataInputStream(clientSocket.getInputStream());
-            ip = clientSocket.getInetAddress().toString();
+            ip = clientSocket.getInetAddress().getHostAddress();
             porta = Integer.toString(clientSocket.getPort());
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,6 +80,22 @@ public class ServerThread extends Thread {
                         }
                     }
 
+
+
+
+            }
+
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            String dateNowString = format.format(new Date());
+            try {
+                Date timeMin = format.parse("21:00");
+                Date timeMax = format.parse("21:50");
+                Date timeNow = format.parse(dateNowString);
+                if (timeNow.getTime() > timeMin.getTime() && timeNow.getTime() < timeMax.getTime() ){
+                    System.out.println("Disparo");
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
             for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
