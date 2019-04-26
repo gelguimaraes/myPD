@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Subscritor {
 
     private String ip;
-    private String porta;
+    private int porta;
 
-    public Subscritor(String ip, String porta) {
+    public Subscritor(String ip, int porta) {
         this.ip = ip;
         this.porta = porta;
     }
@@ -21,16 +21,16 @@ public class Subscritor {
         this.ip = ip;
     }
 
-    public String getPorta() {
+    public int getPorta() {
         return porta;
     }
 
-    public void setPorta(String porta) {
+    public void setPorta(int porta) {
         this.porta = porta;
     }
 
-    public Boolean isSubscritor(String ip, String porta) {
-        if ((this.ip.equals(ip)) && (this.porta.equals(porta))) {
+    public Boolean isSubscritor(String ip, int porta) {
+        if ((this.ip.equals(ip)) && (this.porta == porta)) {
             return true;
         }
         return false;
