@@ -16,15 +16,17 @@ public class Client {
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         DataInputStream dis = new DataInputStream(socket.getInputStream());
 
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Digite um tópico para monitorar: ");
+        dos.writeUTF(teclado.nextLine());
+
         while (true) {
-            Scanner teclado = new Scanner(System.in);
-            System.out.print("Digite um tópico: ");
-            dos.writeUTF(teclado.nextLine());
 
             // lendo o que o servidor enviou
             String mensagem = dis.readUTF();
-
             System.out.println(mensagem);
+
+            //cria server
         }
         /*
          * Observe o while acima. Perceba que primeiro se escreve para o servidor (linha 27), depois se lê do canal de

@@ -12,7 +12,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Servidor Iniciado !");
-
+        // criar tread q ficara enviando dados pros clientes
         ServerSocket serverSocket = new ServerSocket(7000);
 
         Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();

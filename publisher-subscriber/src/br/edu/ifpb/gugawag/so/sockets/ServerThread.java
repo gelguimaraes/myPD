@@ -49,11 +49,11 @@ public class ServerThread extends Thread {
 
             if(this.topicos.get(topico) == null){
                 subscritors = new ArrayList<>();
-                subscritor = new Subscritor(ip, porta);
+                subscritor = new Subscritor(ip, porta, this.clientSocket);
                 subscritors.add(subscritor);
                 this.topicos.put(topico, subscritors);
                 try {
-                    dos.writeUTF("Novo inscrito e novo tópico adicionado: " + topico);
+                    this.notifyTopic(topico, "Cliente " + ip + " Entrou no novo tópico " + topico);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -72,9 +72,9 @@ public class ServerThread extends Thread {
                         }
                     }
                     if (!isSbuscritor){
-                        subscritors.add(new Subscritor(ip, porta));
+                        subscritors.add(new Subscritor(ip, porta, this.clientSocket));
                         try {
-                            dos.writeUTF("Adicionado ao topico: " + topico);
+                            this.notifyTopic(topico, "Cliente " + ip + " Entrou no novo tópico " + topico);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -108,6 +108,21 @@ public class ServerThread extends Thread {
                 }
                 System.out.println(texto);
             }
+        }
+    }
+
+    public void notifyTopic(String topico, String msg) throws  IOException{
+
+        ArrayList<Subscritor> subscritors = topicos.get(topico);
+        DataOutputStream dos = null;
+        DataInputStream dis = null;
+        Socket socket = null;
+
+        for(Subscritor subscritor : subscritors) {
+                socket = subscritor.getSocket();
+                dos = new DataOutputStream(socket.getOutputStream());
+                dos.writeUTF(msg);
+                dos.flush();
         }
     }
 }

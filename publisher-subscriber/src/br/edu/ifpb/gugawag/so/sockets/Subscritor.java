@@ -1,5 +1,6 @@
 package br.edu.ifpb.gugawag.so.sockets;
 
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Subscritor {
@@ -7,11 +8,13 @@ public class Subscritor {
     private String ip;
     private String porta;
 
-    public Subscritor(String ip, String porta) {
+    private Socket socket;
+
+    public Subscritor(String ip, String porta, Socket socket) {
         this.ip = ip;
         this.porta = porta;
+        this.socket = socket;
     }
-
 
     public String getIp() {
         return ip;
@@ -36,4 +39,11 @@ public class Subscritor {
         return false;
     }
 
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
 }
