@@ -15,10 +15,12 @@ public class ServerThread extends Thread {
 
     private Socket clientSocket;
     private Map<String, ArrayList<Subscritor>> topicos;
+    private  Map<String, String> noticias;
 
-    public ServerThread(Socket clientSocket, Map<String, ArrayList<Subscritor>> topicos) {
+    public ServerThread(Socket clientSocket, Map<String, ArrayList<Subscritor>> topicos, Map<String, String> noticias) {
         this.clientSocket = clientSocket;
         this.topicos = topicos;
+        this.noticias = noticias;
     }
 
     public void run() {
@@ -29,6 +31,9 @@ public class ServerThread extends Thread {
         int porta = 0;
         Subscritor subscritor;
         ArrayList<Subscritor> subscritors;
+        Socket socket = null;
+        DataOutputStream dosmsg = null;
+        DataInputStream dismsg =  null;
 
         try {
             dos = new DataOutputStream(clientSocket.getOutputStream());
@@ -84,20 +89,29 @@ public class ServerThread extends Thread {
 
             } else {
                 try {
-                    dos.writeUTF(Integer.toString(7100));
-                    Socket socket = new Socket(ip, 7100);
 
-                    DataOutputStream dosmsg = new DataOutputStream(socket.getOutputStream());
-                    DataInputStream dismsg = new DataInputStream(socket.getInputStream());
+                    dos.writeUTF(Integer.toString(7100));
+
+                    if (socket == null) socket = new Socket(ip, 7100);
+
+                    if(dosmsg == null) dosmsg = new DataOutputStream(socket.getOutputStream());
+                    if(dismsg == null) dismsg = new DataInputStream(socket.getInputStream());
 
                     SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                     String dateNowString = format.format(new Date());
                     try {
-                        long timeMin = format.parse("21:00").getTime();
-                        long timeMax = format.parse("21:50").getTime();
+                        long timeMin = format.parse("14:00").getTime();
+                        long timeMax = format.parse("15:50").getTime();
                         long timeNow = format.parse(dateNowString).getTime();
                         if (timeNow > timeMin && timeNow < timeMax) {
-                            dosmsg.writeUTF("Noticia");
+
+                            for (Map.Entry<String, String> entry : this.noticias.entrySet()) {
+                                String t = entry.getKey();
+                                String n = entry.getValue();
+                                if(t.equals(topico)){
+                                    dosmsg.writeUTF(n);
+                                }
+                            }
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();

@@ -12,11 +12,16 @@ public class Client {
     public static void main(String[] args) throws IOException {
         System.out.println("Cliente Iniciado!");
 
-        Socket socket = new Socket("192.168.15.11", 7000);
+        Socket socket = new Socket("10.0.4.187", 7000);
 
 
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         DataInputStream dis = new DataInputStream(socket.getInputStream());
+
+        ServerSocket serverSocket = null;
+        Socket clientSocket = null;
+        DataOutputStream dosmsg = null;
+        DataInputStream dismsg = null;
 
         while (true) {
             Scanner teclado = new Scanner(System.in);
@@ -28,10 +33,16 @@ public class Client {
             System.out.println(mensagem);
             dos.writeUTF("porta");
             Integer porta = Integer.parseInt(dis.readUTF());
-            ServerSocket serverSocket = new ServerSocket(porta);
-            Socket clientSocket = serverSocket.accept();
-            DataOutputStream dosmsg = new DataOutputStream(clientSocket.getOutputStream());
-            DataInputStream dismsg = new DataInputStream(clientSocket.getInputStream());
+            if(serverSocket == null)
+                serverSocket = new ServerSocket(porta);
+
+            if (clientSocket == null) clientSocket = serverSocket.accept();
+
+            if (dismsg == null){
+                dismsg   = new DataInputStream(clientSocket.getInputStream());
+            }
+            // DataOutputStream(clientSocket.getOutputStream());
+
             System.out.println(dismsg.readUTF());
 
         }
