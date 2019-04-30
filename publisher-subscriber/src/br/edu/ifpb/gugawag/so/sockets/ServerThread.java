@@ -2,6 +2,7 @@ package br.edu.ifpb.gugawag.so.sockets;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ public class ServerThread extends Thread {
     private Socket clientSocket;
     private Map<String, ArrayList<Subscritor>> topicos;
     private  Map<String, String> noticias;
+    private String tempTopico = null;
 
     public ServerThread(Socket clientSocket, Map<String, ArrayList<Subscritor>> topicos, Map<String, String> noticias) {
         this.clientSocket = clientSocket;
@@ -34,6 +36,7 @@ public class ServerThread extends Thread {
         Socket socket = null;
         DataOutputStream dosmsg = null;
         DataInputStream dismsg =  null;
+        Boolean nosend = true;
 
         try {
             dos = new DataOutputStream(clientSocket.getOutputStream());
@@ -52,12 +55,13 @@ public class ServerThread extends Thread {
                 e.printStackTrace();
             }
 
-            if (!topico.equals("porta")) {
+            if (!topico.equals("sendMeNew")) {
                 if (this.topicos.get(topico) == null) {
                     subscritors = new ArrayList<>();
                     subscritor = new Subscritor(ip, porta);
                     subscritors.add(subscritor);
                     this.topicos.put(topico, subscritors);
+                    this.tempTopico = topico;
                     try {
                         dos.writeUTF("Novo inscrito e novo tópico adicionado: " + topico);
                     } catch (IOException e) {
@@ -88,53 +92,53 @@ public class ServerThread extends Thread {
                 }
 
             } else {
-                try {
-
-                    dos.writeUTF(Integer.toString(7100));
-
-                    if (socket == null) socket = new Socket(ip, 7100);
-
-                    if(dosmsg == null) dosmsg = new DataOutputStream(socket.getOutputStream());
-                    if(dismsg == null) dismsg = new DataInputStream(socket.getInputStream());
-
-                    SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                    String dateNowString = format.format(new Date());
                     try {
-                        long timeMin = format.parse("14:00").getTime();
-                        long timeMax = format.parse("15:50").getTime();
-                        long timeNow = format.parse(dateNowString).getTime();
-                        if (timeNow > timeMin && timeNow < timeMax) {
-
-                            for (Map.Entry<String, String> e : this.noticias.entrySet()) {
-                                String t = e.getKey();
-                                String n = e.getValue();
-                                System.out.println(t);
-                                if(t.equals(topico)){
-                                    dosmsg.writeUTF(n);
+                        dos.writeUTF(Integer.toString(7100));
+                        if (socket == null) socket = new Socket(ip, 7100);
+                        if(dosmsg == null) dosmsg = new DataOutputStream(socket.getOutputStream());
+                        if(dismsg == null) dismsg = new DataInputStream(socket.getInputStream());
+                        while (nosend){
+                            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                            String dateNowString = format.format(new Date());
+                            long timeNow = format.parse(dateNowString).getTime();
+                            long timeMin = format.parse("21:57").getTime();
+                            long timeMax = format.parse("22:00").getTime();
+                            sleep(1000);
+                            if (timeNow > timeMin && timeNow < timeMax) {
+                                for (Map.Entry<String, String> e : this.noticias.entrySet()) {
+                                    String t = e.getKey();
+                                    String n = e.getValue();
+                                    if(t.equals(tempTopico)){
+                                        dosmsg.writeUTF(n);
+                                        nosend = false;
+                                        break;
+                                    }
                                 }
                             }
                         }
+
                     } catch (ParseException e) {
                         e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (UnknownHostException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
-
-
-            for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
-                String texto = "";
-                String t = entry.getKey();
-                texto += "Tópico: " + t + "\nSubscriptors:\n";
-                subscritors = entry.getValue();
-                for (Subscritor s : subscritors) {
-                    texto += "Ip " + s.getIp() + " Porta " + s.getPorta() + "\n";
+            if (!topico.equals("porta")) {
+                for (Map.Entry<String, ArrayList<Subscritor>> entry : this.topicos.entrySet()) {
+                    String texto = "";
+                    String t = entry.getKey();
+                    texto += "Tópico: " + t + "\nSubscriptors:\n";
+                    subscritors = entry.getValue();
+                    for (Subscritor s : subscritors) {
+                        texto += "Ip " + s.getIp() + " Porta " + s.getPorta() + "\n";
+                    }
+                    System.out.println(texto);
                 }
-                System.out.println(texto);
             }
         }
     }

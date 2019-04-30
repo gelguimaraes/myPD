@@ -19,6 +19,7 @@ public class Server {
         Map<String, String> noticias = new HashMap<String, String>();
         noticias.put("Esporte","Notícia de Esporte");
         noticias.put("Policial","Noticia Policial");
+        noticias.put("Tecnologia","Noticia sobre Tecnologias");
 
         while (true) {
             Socket clientSocket = null;
