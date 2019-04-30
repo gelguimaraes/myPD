@@ -39,6 +39,7 @@ public class BancoServiceServer extends UnicastRemoteObject implements BancoServ
     @Override
     public void addConta(Conta conta) throws RemoteException {
         this.contas.add(conta);
+        this.saldoContas.put(conta.getNumero(), conta.getSaldo());
     }
 
     @Override
