@@ -105,9 +105,10 @@ public class ServerThread extends Thread {
                         long timeNow = format.parse(dateNowString).getTime();
                         if (timeNow > timeMin && timeNow < timeMax) {
 
-                            for (Map.Entry<String, String> entry : this.noticias.entrySet()) {
-                                String t = entry.getKey();
-                                String n = entry.getValue();
+                            for (Map.Entry<String, String> e : this.noticias.entrySet()) {
+                                String t = e.getKey();
+                                String n = e.getValue();
+                                System.out.println(t);
                                 if(t.equals(topico)){
                                     dosmsg.writeUTF(n);
                                 }

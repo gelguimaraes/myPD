@@ -18,7 +18,7 @@ public class Server {
         Map<String, ArrayList<Subscritor>> topicos = new HashMap<String, ArrayList<Subscritor>>();
         Map<String, String> noticias = new HashMap<String, String>();
         noticias.put("Esporte","Notícia de Esporte");
-        noticias.put("Policial","Noticia Plicial");
+        noticias.put("Policial","Noticia Policial");
 
         while (true) {
             Socket clientSocket = null;
