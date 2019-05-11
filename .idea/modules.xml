@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" filepath="$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" filepath="$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" />
       <module fileurl="file://$PROJECT_DIR$/socket-ipc-master/socket-ipc-master.iml" filepath="$PROJECT_DIR$/socket-ipc-master/socket-ipc-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transferindoJSON/transferindoJSON.iml" filepath="$PROJECT_DIR$/transferindoJSON/transferindoJSON.iml" />
     </modules>
   </component>
 </project>
