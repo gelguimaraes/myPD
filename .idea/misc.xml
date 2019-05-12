@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/rabbitmq-hello/pom.xml" />
         <option value="$PROJECT_DIR$/filasepersistencia/pom.xml" />
         <option value="$PROJECT_DIR$/transferindoJSON/pom.xml" />
+        <option value="$PROJECT_DIR$/WorkQueues/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

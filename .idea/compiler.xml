@@ -9,12 +9,14 @@
         <module name="filasepersistencia" />
         <module name="rabbitmq-hello" />
         <module name="transferindoJSON" />
+        <module name="WorkQueues" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="filasepersistencia" target="8" />
       <module name="rabbitmq-hello" target="8" />
       <module name="transferindoJSON" target="8" />
+      <module name="WorkQueues" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
