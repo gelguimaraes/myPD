@@ -1,4 +1,4 @@
-package pd;
+package br.edu.ifpb.pd;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

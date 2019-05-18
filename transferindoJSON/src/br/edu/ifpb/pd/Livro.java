@@ -1,4 +1,4 @@
-package pd;
+package br.edu.ifpb.pd;
 
 public class Livro {
 
