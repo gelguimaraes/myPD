@@ -5,11 +5,13 @@
       <module fileurl="file://$PROJECT_DIR$/BancoRMI/BancoRMI.iml" filepath="$PROJECT_DIR$/BancoRMI/BancoRMI.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sistema-de-Pagamentos/SistemadePagamentos.iml" filepath="$PROJECT_DIR$/Sistema-de-Pagamentos/SistemadePagamentos.iml" />
       <module fileurl="file://$PROJECT_DIR$/WorkQueues/WorkQueues.iml" filepath="$PROJECT_DIR$/WorkQueues/WorkQueues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SistemadePagamentos/br.edu.ifpb.pd.iml" filepath="$PROJECT_DIR$/SistemadePagamentos/br.edu.ifpb.pd.iml" />
       <module fileurl="file://$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" filepath="$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" />
       <module fileurl="file://$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" filepath="$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" filepath="$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" />
       <module fileurl="file://$PROJECT_DIR$/publisher-subscriber-rabbitmq/publisher-subscriber-rabbitmq.iml" filepath="$PROJECT_DIR$/publisher-subscriber-rabbitmq/publisher-subscriber-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" filepath="$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sistema-pagamento/sistema-pagamento.iml" filepath="$PROJECT_DIR$/sistema-pagamento/sistema-pagamento.iml" />
       <module fileurl="file://$PROJECT_DIR$/socket-ipc-master/socket-ipc-master.iml" filepath="$PROJECT_DIR$/socket-ipc-master/socket-ipc-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/transferindoJSON/transferindoJSON.iml" filepath="$PROJECT_DIR$/transferindoJSON/transferindoJSON.iml" />
     </modules>
