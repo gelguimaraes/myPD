@@ -25,6 +25,8 @@ public class ConsumidorVisa {
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
 
+            System.out.println(b.toString());
+
             String msgretorno = "Cartao "+ b.getCartao() + "está Ok";
             try {
                 new ProdutorVisa(msgretorno);
