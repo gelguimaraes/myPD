@@ -57,12 +57,12 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "Banco{" +
-                "ag='" + ag + '\'' +
-                ", conta='" + conta + '\'' +
-                ", senha='" + senha + '\'' +
-                ", numero_cartao='" + numero_cartao + '\'' +
-                ", valor=" + valor +
+        return "Dados do Cliente: {" +
+                "Agência:'" + ag + '\'' +
+                ", Conta: '" + conta + '\'' +
+                ", Senha: '" + senha + '\'' +
+                ", Numero do cartão: '" + numero_cartao + '\'' +
+                ", Valor do pagamento: " + valor +
                 '}';
     }
 }

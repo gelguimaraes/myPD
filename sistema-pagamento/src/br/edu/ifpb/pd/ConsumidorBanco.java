@@ -24,23 +24,24 @@ public class ConsumidorBanco {
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
 
-            System.out.println(g);
+            //System.out.println(b);
 
-            int cartao = Integer.parseInt(b.getCartao());
+            Long cartao = Long.parseLong(b.getCartao());
+            //System.out.println(cartao);
             if (cartao % 2 == 0) {
-                //valido
+                //System.out.println("valido");
                try {
                    new ProdutorBanco(msgJson);
                }catch (Exception e){
-                   System.out.println(e);
+                   System.out.println("erro:" + e.getMessage());
                }
             } else {
-                //invalido
+                //System.out.println("invalido");
             }
 
         };
         canal.basicConsume(FILA_CLIENTE_BANCO, true, callback, (consumerTag) -> {
         });
-        System.out.printf("Fim Consumidor Banco");
+        System.out.println("Fim Consumidor Banco");
     }
 }

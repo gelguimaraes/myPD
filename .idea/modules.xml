@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BancoRMI/BancoRMI.iml" filepath="$PROJECT_DIR$/BancoRMI/BancoRMI.iml" />
       <module fileurl="file://$PROJECT_DIR$/WorkQueues/WorkQueues.iml" filepath="$PROJECT_DIR$/WorkQueues/WorkQueues.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SistemadePagamentos/br.edu.ifpb.pd.iml" filepath="$PROJECT_DIR$/SistemadePagamentos/br.edu.ifpb.pd.iml" />
       <module fileurl="file://$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" filepath="$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" />
       <module fileurl="file://$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" filepath="$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" filepath="$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" />

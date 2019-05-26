@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="br.edu.ifpb.pd" />
         <module name="filasepersistencia" />
         <module name="publisher-subscriber-rabbitmq" />
         <module name="rabbitmq-hello" />

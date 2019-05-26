@@ -18,7 +18,7 @@ public class ProdutorBanco {
             System.out.println("Enviando mensagem para fila do visa: " + msgJson);
 
         }
-        System.out.printf("Fim Produtor Banco");
+        System.out.println("Fim Produtor Banco");
 
     }
 
