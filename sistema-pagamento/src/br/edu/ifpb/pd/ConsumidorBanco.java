@@ -28,15 +28,14 @@ public class ConsumidorBanco {
 
             Long cartao = Long.parseLong(b.getCartao());
             //System.out.println(cartao);
-            if (cartao % 2 == 0) {
-                //System.out.println("valido");
-               try {
-                   new ProdutorBanco(msgJson);
-               }catch (Exception e){
-                   System.out.println("erro:" + e.getMessage());
-               }
-            } else {
-                //System.out.println("invalido");
+            if (cartao % 2 != 0) {
+                msgJson = "Cartão inválido!";
+            }
+
+            try {
+                new ProdutorBanco(msgJson);
+            }catch (Exception e){
+                System.out.println("erro:" + e.getMessage());
             }
 
         };
