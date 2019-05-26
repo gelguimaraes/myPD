@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c7f5b810-1fe7-42b2-830b-81ebf22fb975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorVisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorVisa.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorVisa.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
@@ -23,14 +22,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="31" column="47" lean-forward="true" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+            <state relative-caret-position="250">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/5.6.0/amqp-client-5.6.0-sources.jar!/com/rabbitmq/client/CancelCallback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -85,8 +93,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java" />
         <option value="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorVisa.java" />
+        <option value="$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java" />
       </list>
     </option>
   </component>
@@ -176,7 +184,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558903248984" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558903511390" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -245,12 +253,12 @@
       <workItem from="1558895127258" duration="1203000" />
       <workItem from="1558900272525" duration="202000" />
       <workItem from="1558900485225" duration="450000" />
-      <workItem from="1558900942216" duration="2296000" />
+      <workItem from="1558900942216" duration="2557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5956000" />
+    <option name="totallyTimeSpent" value="6217000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -361,16 +369,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="47" lean-forward="true" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/edu/ifpb/pd/ProdutorBanco.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -385,6 +383,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/5.6.0/amqp-client-5.6.0-sources.jar!/com/rabbitmq/client/CancelCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/edu/ifpb/pd/ConsumidorBanco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
