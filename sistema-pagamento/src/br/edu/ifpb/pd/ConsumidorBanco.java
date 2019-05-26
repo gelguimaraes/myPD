@@ -23,15 +23,10 @@ public class ConsumidorBanco {
             System.out.println("Recebendo mensagem da fila sendClienteBanco: " + msgJson);
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
-
-            //System.out.println(b);
-
+            
             Long cartao = Long.parseLong(b.getCartao());
-            //System.out.println(cartao);
             if (cartao % 2 == 0) {
-                //System.out.println("valido");
                try {
-                   System.out.println("Criando produtor Banco");
                    new ProdutorBanco(msgJson);
                }catch (Exception e){
                    System.out.println("erro:" + e.getMessage());
