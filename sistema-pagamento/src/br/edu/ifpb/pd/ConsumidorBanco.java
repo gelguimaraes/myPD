@@ -23,7 +23,7 @@ public class ConsumidorBanco {
             System.out.println("Recebendo mensagem da fila sendClienteBanco: " + msgJson);
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
-            
+
             Long cartao = Long.parseLong(b.getCartao());
             if (cartao % 2 != 0) {
                 msgJson = "Cartão inválido";

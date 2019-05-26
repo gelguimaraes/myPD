@@ -1,0 +1,9 @@
+{
+    "ag": "string",
+    "conta": "string",
+    "senha": "string",
+    "numero_cartao": "string",
+    "valor": "double" 
+}
+
+
