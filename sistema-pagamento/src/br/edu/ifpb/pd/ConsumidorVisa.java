@@ -10,7 +10,7 @@ import com.rabbitmq.client.DeliverCallback;
 import java.util.Map;
 
 public class ConsumidorVisa {
-
+    private static int visaCont = 0;
     public static void main(String[] args) throws Exception {
         System.out.println("Inicio Consumidor Visa");
         String FILA_BANCO_VISA = "sendBancoVisa";
@@ -28,6 +28,8 @@ public class ConsumidorVisa {
             System.out.println(b.toString());
 
             String msgretorno = "Pagamento com cartao "+ b.getCartao() + " realizado com sucesso!";
+            visaCont++;
+            System.out.println("Pagamentos registrados: " + visaCont);
             try {
                 new ProdutorVisa(msgretorno);
             }catch (Exception e){

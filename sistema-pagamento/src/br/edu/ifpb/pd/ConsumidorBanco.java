@@ -31,12 +31,13 @@ public class ConsumidorBanco {
             if (cartao % 2 == 0) {
                 //System.out.println("valido");
                try {
+                   System.out.println("Criando produtor Banco");
                    new ProdutorBanco(msgJson);
                }catch (Exception e){
                    System.out.println("erro:" + e.getMessage());
                }
             } else {
-                //System.out.println("invalido");
+                System.out.println("cartão invalido");
             }
 
         };
