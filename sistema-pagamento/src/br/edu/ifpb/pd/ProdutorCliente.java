@@ -8,7 +8,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class ProdutorCliente {
     public static void main(String[] args) throws Exception {
-        System.out.println("Produtor Cliente");
+        System.out.println("Inicio Produtor Cliente");
         String FILA_CLIENTE_BANCO = "sendClienteBanco";
 
         ConnectionFactory connectionFactory = new ConnectionFactory();

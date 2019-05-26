@@ -6,7 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class ProdutorBanco {
     public ProdutorBanco(String msgJson) throws Exception{
-        System.out.println("Produtor Banco");
+        System.out.println("Inicio Produtor Banco");
         String FILA_BANCO_VISA = "sendBancoVisa";
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");

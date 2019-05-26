@@ -8,7 +8,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class ProdutorVisa {
     public  ProdutorVisa(String msg) throws Exception{
-            System.out.println("Produtor Visa");
+            System.out.println("Inicio Produtor Visa");
             String FILA_VISA_CLIENTE = "sendVisaCliente";
             ConnectionFactory connectionFactory = new ConnectionFactory();
             connectionFactory.setHost("localhost");
@@ -20,7 +20,7 @@ public class ProdutorVisa {
                 System.out.println("Enviando mensagem para fila do cliente: " + msg);
 
             }
-            System.out.printf("Fim Produtor Visa");
+            System.out.println("Fim Produtor Visa");
 
         }
 }

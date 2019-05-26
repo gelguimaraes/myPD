@@ -12,7 +12,7 @@ import java.util.Map;
 public class ConsumidorVisa {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Consumidor Visa");
+        System.out.println("Inicio Consumidor Visa");
         String FILA_BANCO_VISA = "sendBancoVisa";
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
@@ -21,13 +21,13 @@ public class ConsumidorVisa {
         canal.queueDeclare(FILA_BANCO_VISA, true, false, false, (Map)null);
         DeliverCallback callback = (consumerTag, delivery) -> {
             String msgJson = new String(delivery.getBody());
-            System.out.println("Recebendo mensagem da fila : " + msgJson);
+            System.out.println("Recebendo mensagem da fila sendBancoVisa: " + msgJson);
             Gson g = new Gson();
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
 
-            System.out.println("dados do cliente:" + b.toString());
+            System.out.println(b.toString());
 
-            String msgretorno = "Pagamento com cartao "+ b.getCartao() + " está realizado com sucesso!";
+            String msgretorno = "Pagamento com cartao "+ b.getCartao() + " realizado com sucesso!";
             try {
                 new ProdutorVisa(msgretorno);
             }catch (Exception e){
@@ -37,6 +37,6 @@ public class ConsumidorVisa {
         };
         canal.basicConsume(FILA_BANCO_VISA, true, callback, (consumerTag) -> {
         });
-        System.out.printf("Fim Consumidor Visa");
+        System.out.println("Fim Consumidor Visa");
     }
 }
