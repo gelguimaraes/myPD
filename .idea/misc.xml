@@ -7,7 +7,6 @@
         <option value="$PROJECT_DIR$/filasepersistencia/pom.xml" />
         <option value="$PROJECT_DIR$/transferindoJSON/pom.xml" />
         <option value="$PROJECT_DIR$/WorkQueues/pom.xml" />
-        <option value="$PROJECT_DIR$/SistemadePagamentos/pom.xml" />
         <option value="$PROJECT_DIR$/publisher-subscriber-rabbitmq/pom.xml" />
         <option value="$PROJECT_DIR$/sistema-pagamento/pom.xml" />
       </list>
@@ -18,7 +17,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8_144" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

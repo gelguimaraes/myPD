@@ -11,7 +11,6 @@
         <module name="publisher-subscriber-rabbitmq" />
         <module name="rabbitmq-hello" />
         <module name="sistema-pagamento" />
-        <module name="SistemadePagamentos" />
         <module name="transferindoJSON" />
         <module name="WorkQueues" />
       </profile>
