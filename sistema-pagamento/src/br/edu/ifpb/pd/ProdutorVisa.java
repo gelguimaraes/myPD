@@ -4,6 +4,7 @@ package br.edu.ifpb.pd;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 
 public class ProdutorVisa {
@@ -16,9 +17,8 @@ public class ProdutorVisa {
 
             try (Connection connection = connectionFactory.newConnection();Channel channel = connection.createChannel()) {
                 ((com.rabbitmq.client.Channel) channel).queueDeclare(FILA_VISA_CLIENTE, true, false, false, null);
-                ((com.rabbitmq.client.Channel) channel).basicPublish("", FILA_VISA_CLIENTE, null, msg.getBytes());
+                ((com.rabbitmq.client.Channel) channel).basicPublish("", FILA_VISA_CLIENTE, MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());
                 System.out.println("Enviando mensagem para fila do cliente: " + msg);
-
             }
             System.out.println("Fim Produtor Visa");
 

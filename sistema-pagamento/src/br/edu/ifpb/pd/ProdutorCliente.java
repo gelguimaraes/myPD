@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 
 public class ProdutorCliente {
@@ -21,8 +22,9 @@ public class ProdutorCliente {
 
 
         try (Connection connection = connectionFactory.newConnection();Channel channel = connection.createChannel()) {
+
             ((Channel) channel).queueDeclare(FILA_CLIENTE_BANCO, true, false, false, null);
-            ((Channel) channel).basicPublish("", FILA_CLIENTE_BANCO, null, mensagem.getBytes());
+            ((Channel) channel).basicPublish("", FILA_CLIENTE_BANCO, MessageProperties.PERSISTENT_TEXT_PLAIN, mensagem.getBytes());
             System.out.println("Mensagem: " + mensagem);
         }
         System.out.println("Fim Produtor Cliente");

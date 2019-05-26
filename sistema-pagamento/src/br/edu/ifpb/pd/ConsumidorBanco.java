@@ -1,12 +1,12 @@
 package br.edu.ifpb.pd;
 
 import com.google.gson.Gson;
-import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 import java.util.Map;
+
 
 public class ConsumidorBanco {
 
@@ -25,14 +25,14 @@ public class ConsumidorBanco {
             Banco b = (Banco)g.fromJson(msgJson, Banco.class);
             
             Long cartao = Long.parseLong(b.getCartao());
-            if (cartao % 2 == 0) {
-               try {
-                   new ProdutorBanco(msgJson);
-               }catch (Exception e){
-                   System.out.println("erro:" + e.getMessage());
-               }
-            } else {
-                System.out.println("cartão invalido");
+            if (cartao % 2 != 0) {
+                msgJson = "Cartão inválido";
+            }
+
+            try {
+                new ProdutorBanco(msgJson);
+            }catch (Exception e){
+                System.out.println("erro:" + e.getMessage());
             }
 
         };

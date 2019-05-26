@@ -3,6 +3,7 @@ package br.edu.ifpb.pd;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 public class ProdutorBanco {
     public ProdutorBanco(String msgJson) throws Exception{
@@ -14,7 +15,7 @@ public class ProdutorBanco {
 
         try (Connection connection = connectionFactory.newConnection();Channel channel = connection.createChannel()) {
             ((com.rabbitmq.client.Channel) channel).queueDeclare(FILA_BANCO_VISA, true, false, false, null);
-            ((com.rabbitmq.client.Channel) channel).basicPublish("", FILA_BANCO_VISA, null, msgJson.getBytes());
+            ((com.rabbitmq.client.Channel) channel).basicPublish("", FILA_BANCO_VISA, MessageProperties.PERSISTENT_TEXT_PLAIN, msgJson.getBytes());
             System.out.println("Enviando mensagem para fila do visa: " + msgJson);
 
         }
