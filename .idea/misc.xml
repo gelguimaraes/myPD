@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/WorkQueues/pom.xml" />
         <option value="$PROJECT_DIR$/publisher-subscriber-rabbitmq/pom.xml" />
         <option value="$PROJECT_DIR$/sistema-pagamento/pom.xml" />
+        <option value="$PROJECT_DIR$/Lamport/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="filasepersistencia" />
+        <module name="Lamport" />
         <module name="publisher-subscriber-rabbitmq" />
         <module name="rabbitmq-hello" />
         <module name="sistema-pagamento" />
@@ -15,8 +16,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="br.edu.ifpb.pd" target="8" />
       <module name="filasepersistencia" target="8" />
+      <module name="Lamport" target="8" />
       <module name="publisher-subscriber-rabbitmq" target="8" />
       <module name="rabbitmq-hello" target="8" />
       <module name="sistema-pagamento" target="8" />
