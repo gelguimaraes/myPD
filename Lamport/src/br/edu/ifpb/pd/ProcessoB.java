@@ -23,9 +23,11 @@ public class ProcessoB {
                 String msgTimed  = m.receive_timed(ts, msgTimedA);
                 String msgSplit[] = msgTimed.split(":");
                 int newts = Integer.parseInt(msgSplit[0]);
+                System.out.println("Novo ts de B: " +newts);
                 String msg = "MensagemB";
                 String newMsgTimedA = m.send_timed(msg, newts);
                 System.out.println("Middleware send (" + newMsgTimedA + ")");
+
                 connectionFactory.setHost("localhost");
                 connectionFactory.setPort(5672);
                 channel.queueDeclare("BparaA", false, false, false, null);
