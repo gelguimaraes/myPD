@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/BancoRMI/BancoRMI.iml" filepath="$PROJECT_DIR$/BancoRMI/BancoRMI.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lamport/Lamport.iml" filepath="$PROJECT_DIR$/Lamport/Lamport.iml" />
       <module fileurl="file://$PROJECT_DIR$/WorkQueues/WorkQueues.iml" filepath="$PROJECT_DIR$/WorkQueues/WorkQueues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adressbook/adressbook.iml" filepath="$PROJECT_DIR$/adressbook/adressbook.iml" />
       <module fileurl="file://$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" filepath="$PROJECT_DIR$/filasepersistencia/filasepersistencia.iml" />
       <module fileurl="file://$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" filepath="$PROJECT_DIR$/nfs-sockets-master/nfs-sockets-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" filepath="$PROJECT_DIR$/publisher-subscriber/publisher-subscriber.iml" />

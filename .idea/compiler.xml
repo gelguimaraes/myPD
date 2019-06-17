@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="adressbook" />
         <module name="filasepersistencia" />
         <module name="Lamport" />
         <module name="publisher-subscriber-rabbitmq" />
@@ -16,13 +17,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="filasepersistencia" target="8" />
-      <module name="Lamport" target="8" />
-      <module name="publisher-subscriber-rabbitmq" target="8" />
-      <module name="rabbitmq-hello" target="8" />
-      <module name="sistema-pagamento" target="8" />
-      <module name="transferindoJSON" target="8" />
-      <module name="WorkQueues" target="8" />
+      <module name="adressbook" target="6" />
+      <module name="filasepersistencia" target="1.5" />
+      <module name="Lamport" target="1.5" />
+      <module name="publisher-subscriber-rabbitmq" target="1.5" />
+      <module name="rabbitmq-hello" target="1.5" />
+      <module name="sistema-pagamento" target="1.5" />
+      <module name="transferindoJSON" target="1.5" />
+      <module name="WorkQueues" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
